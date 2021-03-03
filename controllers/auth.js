@@ -23,7 +23,7 @@ exports.login = (req, res, next) => {
   });
 };
 
-exports.register = async (req, res, next) => {
+exports.register = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json(errors.array());
@@ -39,7 +39,7 @@ exports.register = async (req, res, next) => {
         return res.status(400).json({ message: 'Email is already in use' });
       }
 
-      bcrypt.hash(password, 10, (err, hash) => {
+      bcrypt.hash(password, 10, async (err, hash) => {
         if (err) {
           return res.status(400).json(err);
         }
@@ -49,11 +49,15 @@ exports.register = async (req, res, next) => {
           last_name: last_name,
           password: hash,
         });
-        const saveUser = await newUser.save()
-        jwt.sign({user_id: saveUser._id}, process.env.JWT_SECRET, (err, token) => {
-          if(err) return res.status(400).json(err);
-          res.json(token);
-        })
+        const saveUser = await newUser.save();
+        jwt.sign(
+          { user_id: saveUser._id },
+          process.env.JWT_SECRET,
+          (err, token) => {
+            if (err) return res.status(400).json(err);
+            res.json(token);
+          }
+        );
       });
     });
 };
