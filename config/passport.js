@@ -15,7 +15,7 @@ passport.use(
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
     },
     (user, done) => {
-      if (!user) return done(null, error);
+      if (!user) return done(null, false);
       return done(null, user);
     }
   )

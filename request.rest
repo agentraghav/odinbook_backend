@@ -27,6 +27,7 @@ GET http://localhost:5000/auth/facebook/callback
 
 ###
 GET http://localhost:5000/isLoggedIn
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjAzZjViZmM0OWI5MzYzMDliZTU3Y2U4IiwiaWF0IjoxNjE0ODA0NDMxfQ.Pxr6YrahRHCgxcHt-D5mSbQKSh0E5vBFpUi-UtlhTOY
 
 ###
 GET http://localhost:5000/getToken

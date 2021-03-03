@@ -78,6 +78,7 @@ exports.facebook_callback = (req, res, next) => {
 };
 
 exports.logout = (req, res, next) => {
+  res.clearCookie('token');
   req.logout();
   return res.json({
     message: 'Successfully logged out',
