@@ -76,3 +76,26 @@ exports.facebook_callback = (req, res, next) => {
     });
   })(req, res, next);
 };
+
+exports.logout = (req, res, next) => {
+  req.logout();
+  return res.json({
+    message: 'Successfully logged out',
+  });
+};
+
+exports.isLoggedIn = (req, res, next) => {
+  if (req.user) {
+    res.json({ user_id: req.user.user_id });
+  } else {
+    res.sendStatus(400);
+  }
+};
+
+exports.getUserToken = (req, res, next) => {
+  if (req.user) {
+    res.json(req.user);
+  } else {
+    res.redirect(process.env.FRONTPAGE);
+  }
+};

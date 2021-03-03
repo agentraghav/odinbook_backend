@@ -17,4 +17,18 @@ router.get(
 
 router.get('/auth/facebook/callback', authController.facebook_callback);
 
+router.get('/logout', authController.logout);
+
+router.get(
+  '/isLoggedIn',
+  passport.authenticate('jwt', { session: false }),
+  authController.isLoggedIn
+);
+
+router.get(
+  '/getToken',
+  passport.authenticate('jwt', { session: false }),
+  authController.getUserToken
+);
+
 module.exports = router;

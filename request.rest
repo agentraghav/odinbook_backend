@@ -24,3 +24,13 @@ GET http://localhost:5000/auth/facebook
 
 ###
 GET http://localhost:5000/auth/facebook/callback
+
+###
+GET http://localhost:5000/isLoggedIn
+
+###
+GET http://localhost:5000/getToken
+
+###
+GET http://localhost:5000/logout
+
