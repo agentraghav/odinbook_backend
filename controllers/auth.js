@@ -61,3 +61,18 @@ exports.register = (req, res, next) => {
       });
     });
 };
+
+exports.facebook_callback = (req, res, next) => {
+  passport.authenticate('facebook', { session: false }, (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return res.redirect(process.env.FRONTPAGE);
+    }
+    jwt.sign({ user_id: user._id }, process.env.JWT_SECRET, (err, token) => {
+      res.cookie('token', token, { httpOnly: true });
+      return res.redirect(process.env.FRONTPAGE);
+    });
+  });
+};

@@ -7,3 +7,15 @@ Content-Type: application/json
     "last_name":"killer",
     "password":"12345678"
 }
+
+###
+
+POST  http://localhost:5000/login 
+Content-Type: application/json
+
+{
+    "email":"w@w.com",
+    "password":"12345678"
+}
+
+###
