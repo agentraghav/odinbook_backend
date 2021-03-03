@@ -16,11 +16,11 @@ exports.login = (req, res, next) => {
     if (!user) {
       return res.redirect(process.env.FRONTPAGE);
     }
-    jwt.sign({ user_id: user._id }, process.env, SECRET, (err, token) => {
+    jwt.sign({ user_id: user._id }, process.env.JWT_SECRET, (err, token) => {
       res.cookie('token', token);
       res.json({ user, token });
     });
-  });
+  })(req, res, next);
 };
 
 exports.register = (req, res, next) => {
@@ -74,5 +74,5 @@ exports.facebook_callback = (req, res, next) => {
       res.cookie('token', token, { httpOnly: true });
       return res.redirect(process.env.FRONTPAGE);
     });
-  });
+  })(req, res, next);
 };
