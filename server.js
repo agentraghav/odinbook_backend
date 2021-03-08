@@ -7,7 +7,7 @@ const path = require('path');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const authRouter = require('./routes/auth');
+const authRouter = require('./routes/routes');
 require('./config/passport');
 const app = express();
 
