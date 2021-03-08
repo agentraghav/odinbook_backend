@@ -20,3 +20,12 @@ exports.posts = [
   body('user').not().isEmpty().withMessage('Must provide an author ID').trim(),
   body('timestamp').not().isEmpty().withMessage('Missing timestamp'),
 ];
+
+exports.comments = [
+  body('content')
+    .not()
+    .isEmpty()
+    .withMessage('Must provide some content.')
+    .trim(),
+  body('user').not().isEmpty().withMessage('Must provide an author ID.').trim(),
+];
