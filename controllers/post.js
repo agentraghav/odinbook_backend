@@ -33,7 +33,7 @@ exports.create_post = async (req, res) => {
     return res.status(400).json({ message: errors.array() });
   }
   try {
-    const { user, photo, content, photo } = req.body;
+    const { user, photo, content } = req.body;
     const post = new Post({
       user: user,
       content: content,
