@@ -4,6 +4,7 @@ const passport = require('passport');
 
 const authController = require('../controllers/auth');
 const userController = require('../controllers/user');
+const postController = require('../controllers/post');
 const commentController = require('../controllers/comment');
 const friendController = require('../controllers/friendrequest');
 router.post('/login', authController.login);
@@ -49,6 +50,14 @@ router.get('/users/:userid/posts', userController.get_user_posts);
 router.put('/users/:userid/friend', userController.addFriend);
 
 router.put('/users/:userid/unfriend', userController.remove_friend);
+
+router.get('/posts', postController.get_posts);
+router.get('/posts/relevant/:userid', postController.get_relevant_posts);
+router.get('/posts/:postid', postController.get_post_by_id);
+router.post('/posts', postController.create_post);
+router.delete('/posts/:postid', postController.delete_post);
+router.put('/posts/:postid/like', postController.like_post);
+router.put('/posts/:postid/dislike', postController.dislike_post);
 
 router.get('/posts/:postid/comments', commentController.get_all_comments);
 router.get(
