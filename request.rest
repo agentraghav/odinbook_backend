@@ -1,0 +1,37 @@
+POST  http://localhost:5000/register 
+Content-Type: application/json
+
+{
+    "email":"w@w.com",
+    "first_name":"jicksaw",
+    "last_name":"killer",
+    "password":"12345678"
+}
+
+###
+
+POST  http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email":"w@w.com",
+    "password":"12345678"
+}
+
+###
+GET http://localhost:5000/auth/facebook
+
+
+###
+GET http://localhost:5000/auth/facebook/callback
+
+###
+GET http://localhost:5000/isLoggedIn
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjAzZjViZmM0OWI5MzYzMDliZTU3Y2U4IiwiaWF0IjoxNjE0ODA0NDMxfQ.Pxr6YrahRHCgxcHt-D5mSbQKSh0E5vBFpUi-UtlhTOY
+
+###
+GET http://localhost:5000/getToken
+
+###
+GET http://localhost:5000/logout
+
